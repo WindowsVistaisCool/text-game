@@ -3,7 +3,7 @@ from time import sleep as tsleep
 from sys import exit as scriptstop
 
 health = 20
-  
+
 def store(file, key, val, read=False):
   with open(file, 'r') as v:
     x = json.load(v)
@@ -22,7 +22,8 @@ class Profile:
     elif profnumber == 2:
       profilenum = '.prof2.json'
     store(profilenum, 'name', self.name)
-    
+    soter(profilenum, 'first', '0')
+
   def internalgetprof(self, profnumber):
     if profnumber == 1:
       return '.prof1.json'
@@ -37,13 +38,16 @@ def first(profnum):
   tsleep(0.5)
   name = input("What is your name? ")
   if len(name) > 0:
-    continue
+    pass
   else:
     return 0
   print(f"Hi {name}!")
-  global profile1
   if profnum == 1:
+    global profile1
     profile1 = Profile(name, 1)
+  elif profnum == 2:
+    global profile2
+    profile2 = Profile(name, 2)
 
 def startup():
   if store('.prof1.json', 'first', read=True) == '1':
